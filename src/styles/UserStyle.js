@@ -11,19 +11,23 @@ export const UserStyle = StyleSheet.create({
   },
   socialButton: {
     flexDirection: "row",
-    borderColor: "#000",
-    borderWidth: 1,
+    borderColor: "#fafbf5",
     height: responsiveHeight(8),
     width: responsiveWidth(70),
     alignItems: "center",
     justifyContent: "center",
     marginTop: 20,
-    borderRadius: 30,
+    backgroundColor:"#fafbf5",
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.9,
+    shadowRadius: 3,
+    elevation: 3
   },
   icon: {
-    width: responsiveWidth(8),
-    height: responsiveHeight(5),
-    paddingRight: 40,
+    width: responsiveWidth(10),
+    height: responsiveHeight(8),
+    resizeMode: 'contain'
   },
   textStyle: {
     paddingLeft: 20,
@@ -39,12 +43,16 @@ export const UserStyle = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    borderWidth: 2,
     borderColor: "#e3e3e3",
     height: responsiveHeight(8),
     width: responsiveWidth(70),
-    borderRadius: 20,
     marginVertical: 10,
+    backgroundColor: "#fafbf5",
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.9,
+    shadowRadius: 3,
+    elevation: 3
   },
   textInput: {
     height: responsiveHeight(8),
@@ -54,14 +62,21 @@ export const UserStyle = StyleSheet.create({
     marginVertical: 8,
   },
   buttonStyle: {
-    borderColor: "#e3e3e3",
-    borderWidth: 2,
+    justifyContent:"center",
+    alignItems:"center",
+    borderColor: "#fff",
     height: responsiveHeight(8),
-    width: responsiveWidth(70),
-    backgroundColor: "#e3e3e3",
+    width: responsiveWidth(40),
     alignItems: "center",
     justifyContent: "center",
     marginVertical: 10,
+    backgroundColor: "#fff",
+    borderRadius:10,
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.9,
+    shadowRadius: 3,
+    elevation: 3
   },
   textFieldIcon: {
     position: "absolute",
@@ -69,4 +84,8 @@ export const UserStyle = StyleSheet.create({
     width: responsiveWidth(8),
     height: responsiveHeight(5),
   },
+  formStyle: {
+    justifyContent:"center",
+    alignItems:"center",
+  }
 });

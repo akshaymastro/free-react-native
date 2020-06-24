@@ -1,26 +1,33 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import Home from "../Screens/Home";
+import SignUpSignIn from "../Screens/SignUpSignIn";
+import Home from "../Screens/Home"
 
-const StackNav = createStackNavigator();
 
-const StackRoute = () => {
+const SignUpSignInStackNavigator = createStackNavigator();
+
+const UserNavigator = () => {
   return (
-    <StackNav.Navigator initialRouteName="Home">
-      <StackNav.Screen
-        name="Home"
-        component={Home}
+    <SignUpSignInStackNavigator.Navigator initialRouteName="SignUpSignIn">
+      <SignUpSignInStackNavigator.Screen
+        name="SignUpSignIn"
+        component={SignUpSignIn}
         options={{ headerShown: false }}
       />
-    </StackNav.Navigator>
+
+      <SignUpSignInStackNavigator.Screen
+        name="Home"
+        component={Home}
+      />
+    </SignUpSignInStackNavigator.Navigator>
   );
 };
 
 const AppContainer = () => {
   return (
     <NavigationContainer>
-      <StackRoute />
+      <UserNavigator />
     </NavigationContainer>
   );
 };

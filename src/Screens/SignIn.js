@@ -8,9 +8,11 @@ import {
   Button,
 } from "react-native";
 import { UserStyle } from "../styles/UserStyle";
+import {useNavigation} from "@react-navigation/native"
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
-export default () => {
+export default (props) => {
+  const navigation = useNavigation()
   return (
     <KeyboardAwareScrollView
       resetScrollToCoords={{ x: 20, y: 0 }}
@@ -22,13 +24,13 @@ export default () => {
           source={require("../../assets/google.png")}
           style={UserStyle.icon}
         />
-        <Text style={UserStyle.textStyle}>SignIn With Google</Text>
+        <Text style={UserStyle.textStyle}>Sign in With Google</Text>
       </TouchableOpacity>
       <TouchableOpacity style={UserStyle.socialButton}>
         <Image source={require("../../assets/fb.png")} style={UserStyle.icon} />
-        <Text style={UserStyle.textStyle}>SignIn With Facebook</Text>
+        <Text style={UserStyle.textStyle}>Sign in With Facebook</Text>
       </TouchableOpacity>
-      <Text style={UserStyle.ORtextStyle}>Or</Text>
+      <Text style={UserStyle.ORtextStyle}>OR</Text>
       <View style={UserStyle.formStyle}>
         <View style={UserStyle.textInputContiner}>
           <Image
@@ -53,7 +55,7 @@ export default () => {
             placeholderTextColor="#000"
           />
         </View>
-        <TouchableOpacity style={UserStyle.buttonStyle}>
+        <TouchableOpacity style={UserStyle.buttonStyle} onPress={() => navigation.navigate('Home')}>
           <Text>Login</Text>
         </TouchableOpacity>
       </View>

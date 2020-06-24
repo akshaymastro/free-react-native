@@ -46,7 +46,11 @@ export default () => {
           />
         </View>
         <TouchableOpacity style={UserStyle.buttonStyle}>
-          <Text>Login</Text>
+          <Text>Sign Up</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity>
+          <Text>Already have an account?</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAwareScrollView>

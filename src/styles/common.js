@@ -13,7 +13,7 @@ export const CommonStyle = StyleSheet.create({
     padding: 20,
     textAlign: "center",
   },
-  tabIndicator: { backgroundColor: "black" },
+  tabIndicator: { backgroundColor: "orange" },
   tabbarStyle: { backgroundColor: "white" },
   tabbarLable: { color: "black" },
 });

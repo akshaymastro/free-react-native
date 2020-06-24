@@ -1,53 +1,40 @@
 import * as React from "react";
-import { View, StyleSheet, Dimensions } from "react-native";
+import { View, StyleSheet, Dimensions, TouchableOpacity,Text, Image} from "react-native";
 import { TabView, SceneMap, TabBar } from "react-native-tab-view";
-import TopBar from "../Components/Wrapper/Topbar";
-import SignIn from "./SignIn";
-import SignUp from "./Signup";
 import { CommonStyle } from "../styles/common";
-
-const FirstRoute = () => <SignIn />;
-
-const SecondRoute = () => <SignUp />;
+import {
+    responsiveHeight,
+    responsiveWidth,
+  } from "react-native-responsive-dimensions";
 
 const initialLayout = { width: Dimensions.get("window").width };
 
 export default function Home() {
-  const [index, setIndex] = React.useState(0);
-  const [routes] = React.useState([
-    { key: "first", title: "Sign In" },
-    { key: "second", title: "Sign Up" },
-  ]);
 
-  const renderScene = SceneMap({
-    first: FirstRoute,
-    second: SecondRoute,
-  });
-  const renderTabBar = (props) => {
-    return (
-      <TabBar
-        {...props}
-        indicatorStyle={CommonStyle.tabIndicator}
-        style={CommonStyle.tabbarStyle}
-        labelStyle={CommonStyle.tabbarLable}
-      />
-    );
-  };
   return (
-    <TopBar>
-      <TabView
-        renderTabBar={renderTabBar}
-        navigationState={{ index, routes }}
-        renderScene={renderScene}
-        onIndexChange={setIndex}
-        initialLayout={initialLayout}
-      />
-    </TopBar>
-  );
+      <View style={styles.gridItem}>
+          <TouchableOpacity >
+          <Image
+            source={require("../../assets/sell.png")}
+            style={styles.item}
+          />
+          </TouchableOpacity>
+      </View>
+  )
 }
 
 const styles = StyleSheet.create({
-  scene: {
-    flex: 1,
-  },
-});
+    gridItem: {
+      flex: 2,
+      justifyContent:"flex-start",
+      alignItems:"flex-start",
+      margin: 15,
+      overflow: 'hidden'
+    },
+    item: {
+        width: responsiveWidth(30),
+        height: responsiveHeight(15),
+        resizeMode: 'contain'
+    },
+
+  });
