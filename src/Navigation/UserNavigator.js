@@ -11,15 +11,23 @@ import Auto from "../Screens/Auto";
 import Services from "../Screens/Services";
 import Housing from "../Screens/Housing";
 import BottomTabNAvigator from "./BottomTabNavigator";
-import MainScreenNavigator from "./MainScreensNavigator";
-import UserNavigator from "./UserNavigator";
 
-const AppContainer = () => {
+const SignUpSignInStackNavigator = createStackNavigator();
+
+const UserNavigator = () => {
   return (
-    <NavigationContainer>
-      <UserNavigator />
-    </NavigationContainer>
+    <SignUpSignInStackNavigator.Navigator initialRouteName="SignUpSignIn">
+      <SignUpSignInStackNavigator.Screen
+        name="SignUpSignIn"
+        component={SignUpSignIn}
+        options={{ headerShown: false }}
+      />
+      <SignUpSignInStackNavigator.Screen
+        name="Home"
+        component={BottomTabNAvigator}
+      />
+    </SignUpSignInStackNavigator.Navigator>
   );
 };
 
-export default AppContainer;
+export default UserNavigator;

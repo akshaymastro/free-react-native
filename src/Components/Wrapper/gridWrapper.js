@@ -12,17 +12,24 @@ import {
   responsiveWidth,
 } from "react-native-responsive-dimensions";
 
-const initialLayout = { width: Dimensions.get("window").width };
-
 export default function GridTemplate(props) {
+  console.log(props, "propsssss12");
   return (
     <View style={styles.gridItem}>
       {props.category ? (
-        <TouchableOpacity style={styles.containerTab}>
-          <Text>{props.name}</Text>
+        <TouchableOpacity
+          style={styles.containerTab}
+          onPress={() => props.navigation.navigate(props.path)}
+        >
+          <View style={styles.categoryContainer}>
+            <Text style={styles.categoryText}>{props.name}</Text>
+          </View>
         </TouchableOpacity>
       ) : (
-        <TouchableOpacity onPress={() => props.navigation.navigate(props.path)}>
+        <TouchableOpacity
+          style={styles.imageContainer}
+          onPress={() => props.navigation.navigate(props.path)}
+        >
           <Image
             source={props.image}
             style={styles.item}
@@ -36,12 +43,16 @@ export default function GridTemplate(props) {
 
 const styles = StyleSheet.create({
   gridItem: {
-    flex: 2,
+    flex: 1,
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "flex-start",
     flexWrap: "wrap",
     overflow: "hidden",
+    margin: 2,
+  },
+  imageContainer: {
+    alignItems: "center",
   },
   item: {
     width: responsiveWidth(30),
@@ -49,7 +60,19 @@ const styles = StyleSheet.create({
   },
   containerTab: {
     flex: 1,
+    alignItems: "center",
     width: responsiveWidth(30),
     height: responsiveHeight(15),
+  },
+  categoryText: {
+    textAlign: "center",
+    color: "white",
+  },
+  categoryContainer: {
+    width: responsiveWidth(30),
+    height: responsiveHeight(15),
+    backgroundColor: "#3275df",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
