@@ -10,8 +10,9 @@ export const homeVariable = [
     path: "Category",
   },
   {
-    name: "Sell",
+    name: "AdDetails",
     image: require("../../assets/manage.png"),
+    path: "NewAd",
   },
 ];
 

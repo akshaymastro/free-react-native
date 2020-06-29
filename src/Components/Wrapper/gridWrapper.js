@@ -13,7 +13,6 @@ import {
 } from "react-native-responsive-dimensions";
 
 export default function GridTemplate(props) {
-  console.log(props, "propsssss12");
   return (
     <View style={styles.gridItem}>
       {props.category ? (

@@ -10,6 +10,11 @@ import Kids from "../Screens/Kids";
 import Auto from "../Screens/Auto";
 import Services from "../Screens/Services";
 import Housing from "../Screens/Housing";
+
+import AdDetails from "../Screens/AdDetails";
+import EditAd from "../Screens/EditAd"
+import NewAd from "../Screens/NewAd"
+import Settings from "../Screens/Settings"
 import BottomTabNAvigator from "./BottomTabNavigator";
 
 const ScreenNavigator = createStackNavigator();
@@ -24,6 +29,10 @@ const MainScreensNavigator = () => {
       <ScreenNavigator.Screen name="Auto" component={Auto} />
       <ScreenNavigator.Screen name="Services" component={Services} />
       <ScreenNavigator.Screen name="Housing" component={Housing} />
+      <ScreenNavigator.Screen name="AdDetails" component={AdDetails} />
+      <ScreenNavigator.Screen name="EditAd" component={EditAd} />
+      <ScreenNavigator.Screen name="NewAd" component={NewAd} />
+      <ScreenNavigator.Screen name="Settings" component={Settings} />
     </ScreenNavigator.Navigator>
   );
 };
