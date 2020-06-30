@@ -12,10 +12,16 @@ import Services from "../Screens/Services";
 import Housing from "../Screens/Housing";
 
 import AdDetails from "../Screens/AdDetails";
-import EditAd from "../Screens/EditAd"
-import NewAd from "../Screens/NewAd"
-import Settings from "../Screens/Settings"
+import EditAd from "../Screens/EditAd";
+import NewAd from "../Screens/NewAd";
+import Settings from "../Screens/Settings";
+import CommanElement from "../Components/Wrapper/CommanElement";
+import ChatHome from "../Screens/ChatHome";
+import Notifications from "../Screens/Notifications";
 import BottomTabNAvigator from "./BottomTabNavigator";
+import AdPosted from "../Screens/AdPosted";
+import YourAds from "../Screens/YourAds";
+import ChatScreen from "../Screens/chatScreen";
 
 const ScreenNavigator = createStackNavigator();
 
@@ -33,6 +39,11 @@ const MainScreensNavigator = () => {
       <ScreenNavigator.Screen name="EditAd" component={EditAd} />
       <ScreenNavigator.Screen name="NewAd" component={NewAd} />
       <ScreenNavigator.Screen name="Settings" component={Settings} />
+      <ScreenNavigator.Screen name="ChatHome" component={ChatHome} />
+      <ScreenNavigator.Screen name="Notifications" component={Notifications} />
+      <ScreenNavigator.Screen name="YourAds" component={YourAds} />
+      <ScreenNavigator.Screen name="AdPosted" component={AdPosted} />
+      <ScreenNavigator.Screen name="ChatScreen" component={ChatScreen} />
     </ScreenNavigator.Navigator>
   );
 };

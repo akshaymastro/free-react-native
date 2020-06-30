@@ -6,6 +6,8 @@ import Home from "../Screens/Home";
 import Category from "../Screens/Category";
 import UserNavigator from "./UserNavigator";
 import MainScreensNavigator from "./MainScreensNavigator";
+import ChatScreen from "../Screens/chatScreen";
+import ChatHome from "../Screens/ChatHome";
 import {
   Ionicons,
   SimpleLineIcons,
@@ -24,19 +26,15 @@ const BottomTabNAvigator = () => {
 
           if (route.name === "Home") {
             iconName = focused ? "home" : "home";
+          } else if (route.name === "Chat") {
+            iconName = focused ? "chat" : "chat";
           }
-
-          // You can return any component that you like here!
-          return <MaterialIcons name={iconName} size={40} color={color} />;
+          return <MaterialIcons name={iconName} size={30} color={color} />;
         },
       })}
-      tabBarOptions={{
-        showLabel: false,
-        activeTintColor: "#3275df",
-        inactiveTintColor: "#3275df",
-      }}
     >
       <Tab.Screen name="Home" component={MainScreensNavigator} />
+      <Tab.Screen name="Chat" component={ChatHome} />
     </Tab.Navigator>
   );
 };
