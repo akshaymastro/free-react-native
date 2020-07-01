@@ -10,7 +10,7 @@ import {
 import { UserStyle } from "../styles/UserStyle";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
-export default () => {
+export default (navigation) => {
   return (
     <KeyboardAwareScrollView
       resetScrollToCoords={{ x: 20, y: 0 }}
@@ -53,7 +53,7 @@ export default () => {
             placeholderTextColor="#000"
           />
         </View>
-        <TouchableOpacity style={UserStyle.buttonStyle}>
+        <TouchableOpacity onPress={() => navigation.navigate('HomeRoute')} style={UserStyle.buttonStyle}>
           <Text>Login</Text>
         </TouchableOpacity>
       </View>
