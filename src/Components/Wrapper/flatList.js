@@ -14,6 +14,7 @@ export default (props) => {
       numColumns={3}
       contentContainerStyle={{
         justifyContent: "center",
+        // marginTop: 10,
         margin: 10,
       }}
       renderItem={({ item }) => (

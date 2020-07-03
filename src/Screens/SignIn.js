@@ -8,16 +8,18 @@ import {
   Button,
 } from "react-native";
 import { UserStyle } from "../styles/UserStyle";
-import {useNavigation} from "@react-navigation/native"
+import { useNavigation } from "@react-navigation/native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 export default (props) => {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
   return (
     <KeyboardAwareScrollView
-      resetScrollToCoords={{ x: 20, y: 0 }}
+      resetScrollToCoords={{ x: 40, y: 0 }}
       contentContainerStyle={UserStyle.sigInView}
-      scrollEnabled={false}
+      // scrollEnabled={false}
+      // extraScrollHeight={40}
+      scrollEnabled={true}
     >
       <TouchableOpacity style={UserStyle.socialButton}>
         <Image
@@ -30,7 +32,7 @@ export default (props) => {
         <Image source={require("../../assets/fb.png")} style={UserStyle.icon} />
         <Text style={UserStyle.textStyle}>Sign in With Facebook</Text>
       </TouchableOpacity>
-      <Text style={UserStyle.ORtextStyle}>OR</Text>
+      <Text style={UserStyle.ORtextStyle}>Or</Text>
       <View style={UserStyle.formStyle}>
         <View style={UserStyle.textInputContiner}>
           <Image
@@ -55,7 +57,10 @@ export default (props) => {
             placeholderTextColor="#000"
           />
         </View>
-        <TouchableOpacity style={UserStyle.buttonStyle} onPress={() => navigation.navigate('Home')}>
+        <TouchableOpacity
+          style={UserStyle.buttonStyle}
+          onPress={() => navigation.navigate("Home")}
+        >
           <Text>Login</Text>
         </TouchableOpacity>
       </View>

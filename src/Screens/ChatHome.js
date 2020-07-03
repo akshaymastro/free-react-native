@@ -23,11 +23,25 @@ import {
 import { messagesVariable, groupsVariable } from "../utils/common";
 import { useNavigation } from "@react-navigation/native";
 import CommanElement from "../Components/Wrapper/CommanElement";
+import CommanElementWithImage from "../Components/Wrapper/CommanElementWithImage";
 
 const ChatHome = (props) => {
   const [showComponent, setComponent] = useState(false);
+  const [pressButton, setPressButton] = useState(false);
   return (
     <View>
+      <View style={styles.topcontainer}>
+        <TouchableOpacity>
+          <FontAwesome name="bars" size={30} color="#fff" />
+        </TouchableOpacity>
+        <View>
+          <TextInput
+            style={styles.textInput}
+            placeholder="Search"
+            placeholderTextColor="#000"
+          />
+        </View>
+      </View>
       <View style={styles.container}>
         <TouchableOpacity onPress={() => setComponent(false)}>
           <Image
@@ -44,9 +58,9 @@ const ChatHome = (props) => {
       </View>
       <ScrollView>
         {!showComponent ? (
-          <CommanElement dataArray={messagesVariable} {...props} />
+          <CommanElementWithImage dataArray={messagesVariable} {...props} />
         ) : (
-          <CommanElement dataArray={groupsVariable} {...props} />
+          <CommanElementWithImage dataArray={groupsVariable} {...props} />
         )}
       </ScrollView>
     </View>
@@ -61,12 +75,32 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     padding: 20,
     width: responsiveWidth(100),
-    height: responsiveHeight(12),
+    height: responsiveHeight(10),
     backgroundColor: "#fff",
   },
   imageStyle: {
     width: responsiveWidth(15),
-    height: responsiveHeight(8),
+    height: responsiveHeight(5),
     resizeMode: "contain",
+  },
+  topcontainer: {
+    flexDirection: "row",
+    backgroundColor: "#3b75df",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: responsiveWidth(100),
+    height: responsiveHeight(11),
+    borderWidth: 1,
+    borderColor: "#707070",
+    paddingHorizontal: 20,
+    paddingTop: 30,
+  },
+  textInput: {
+    height: responsiveHeight(4),
+    width: responsiveWidth(75),
+    textAlign: "left",
+    backgroundColor: "#fff",
+    paddingHorizontal: 20,
+    borderRadius: 3,
   },
 });

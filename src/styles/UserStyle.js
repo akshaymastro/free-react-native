@@ -3,9 +3,17 @@ import {
   responsiveHeight,
   responsiveWidth,
 } from "react-native-responsive-dimensions";
+
 export const UserStyle = StyleSheet.create({
   sigInView: {
-    flex: 10,
+    flex: 1,
+    marginVertical: 40,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  signUiView: {
+    flex: 1,
+    marginVertical: 80,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -17,24 +25,24 @@ export const UserStyle = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 20,
-    backgroundColor:"#fafbf5",
-    shadowColor: '#000000',
+    backgroundColor: "#fafbf5",
+    shadowColor: "#000000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.9,
     shadowRadius: 3,
-    elevation: 3
+    elevation: 3,
   },
   icon: {
     width: responsiveWidth(10),
     height: responsiveHeight(8),
-    resizeMode: 'contain'
+    resizeMode: "contain",
   },
   textStyle: {
     paddingLeft: 20,
     fontWeight: "bold",
   },
   ORtextStyle: {
-    paddingVertical: 15,
+    paddingVertical: 10,
     fontWeight: "bold",
     fontSize: 20,
     textTransform: "uppercase",
@@ -48,11 +56,11 @@ export const UserStyle = StyleSheet.create({
     width: responsiveWidth(70),
     marginVertical: 10,
     backgroundColor: "#fafbf5",
-    shadowColor: '#000000',
+    shadowColor: "#000000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.9,
     shadowRadius: 3,
-    elevation: 3
+    elevation: 3,
   },
   textInput: {
     height: responsiveHeight(8),
@@ -62,8 +70,8 @@ export const UserStyle = StyleSheet.create({
     marginVertical: 8,
   },
   buttonStyle: {
-    justifyContent:"center",
-    alignItems:"center",
+    justifyContent: "center",
+    alignItems: "center",
     borderColor: "#fff",
     height: responsiveHeight(8),
     width: responsiveWidth(40),
@@ -71,12 +79,12 @@ export const UserStyle = StyleSheet.create({
     justifyContent: "center",
     marginVertical: 10,
     backgroundColor: "#fff",
-    borderRadius:10,
-    shadowColor: '#000000',
+    borderRadius: 10,
+    shadowColor: "#000000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.9,
     shadowRadius: 3,
-    elevation: 3
+    elevation: 3,
   },
   textFieldIcon: {
     position: "absolute",
@@ -85,7 +93,7 @@ export const UserStyle = StyleSheet.create({
     height: responsiveHeight(5),
   },
   formStyle: {
-    justifyContent:"center",
-    alignItems:"center",
-  }
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });

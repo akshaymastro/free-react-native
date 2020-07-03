@@ -26,6 +26,21 @@ import { notificationsVariable } from "../utils/common";
 const Map = (props) => {
   return (
     <View>
+      <View style={styles.topcontainer}>
+        <TouchableOpacity>
+          <FontAwesome name="bars" size={30} color="#fff" />
+        </TouchableOpacity>
+        <View>
+          <TextInput
+            style={styles.textInput}
+            placeholder="Search"
+            placeholderTextColor="#000"
+          />
+        </View>
+        <TouchableOpacity>
+          <FontAwesome name="bell-o" size={30} color="#fff" />
+        </TouchableOpacity>
+      </View>
       <Image
         source={require("../../assets/map.png")}
         style={styles.imageStyle}
@@ -52,11 +67,6 @@ const Map = (props) => {
 export default Map;
 
 const styles = StyleSheet.create({
-  topContainer: {
-    flex: 1,
-    // justifyContent: "center",
-    alignItems: "center",
-  },
   container: {
     flexDirection: "row",
   },
@@ -68,5 +78,26 @@ const styles = StyleSheet.create({
   imageStyle2: {
     // height: responsiveHeight(5),
     // width: responsiveWidth(8),
+  },
+  topcontainer: {
+    flexDirection: "row",
+    backgroundColor: "#3b75df",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: responsiveWidth(100),
+    height: responsiveHeight(11),
+    borderWidth: 1,
+    borderColor: "#707070",
+    paddingHorizontal: 20,
+    paddingTop: 30,
+    // marginTop: 30,
+  },
+  textInput: {
+    height: responsiveHeight(4),
+    width: responsiveWidth(65),
+    textAlign: "left",
+    backgroundColor: "#fff",
+    paddingHorizontal: 20,
+    borderRadius: 3,
   },
 });

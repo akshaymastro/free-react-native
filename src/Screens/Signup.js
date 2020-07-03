@@ -7,7 +7,7 @@ export default () => {
   return (
     <KeyboardAwareScrollView
       resetScrollToCoords={{ x: 20, y: 0 }}
-      contentContainerStyle={UserStyle.sigInView}
+      contentContainerStyle={UserStyle.signUiView}
       scrollEnabled={false}
     >
       <View style={UserStyle.formStyle}>

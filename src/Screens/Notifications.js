@@ -21,6 +21,7 @@ import {
   AntDesign,
 } from "@expo/vector-icons";
 
+import CommanElementWithImage from "../Components/Wrapper/CommanElementWithImage";
 import { notificationsVariable } from "../utils/common";
 
 import CommanElement from "../Components/Wrapper/CommanElement";
@@ -28,7 +29,7 @@ import CommanElement from "../Components/Wrapper/CommanElement";
 const Notifications = (props) => {
   return (
     <ScrollView>
-      <CommanElement dataArray={notificationsVariable} {...props} />
+      <CommanElementWithImage dataArray={notificationsVariable} {...props} />
     </ScrollView>
   );
 };

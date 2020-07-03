@@ -8,6 +8,7 @@ import {
   Button,
   StyleSheet,
   CheckBox,
+  ScrollView,
 } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import {
@@ -27,62 +28,76 @@ const NewAd = (props) => {
   const [isSelected, setSelection] = useState(false);
   const navigation = useNavigation();
   return (
-    <KeyboardAwareScrollView
-      resetScrollToCoords={{ x: 20, y: 0 }}
-      scrollEnabled={false}
-      contentContainerStyle={{ flex: 1, marginTop: 10 }}
-    >
-      <View style={styles.topContainer}>
-        <View style={styles.restImagesContainer}>
-          <TouchableOpacity style={styles.restImageStyleCamra}>
-            <Ionicons name="ios-camera" size={40} color="#3b75df" />
+    <ScrollView>
+      <KeyboardAwareScrollView
+        resetScrollToCoords={{ x: 20, y: 0 }}
+        scrollEnabled={false}
+        contentContainerStyle={{ flex: 1, marginTop: 10 }}
+      >
+        <View style={styles.topContainer}>
+          <View style={styles.restImagesContainer}>
+            <TouchableOpacity style={styles.restImageStyleCamra}>
+              <Ionicons name="ios-camera" size={40} color="#3b75df" />
+            </TouchableOpacity>
+            <ScrollView
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
+              pagingEnabled={true}
+            >
+              <TouchableOpacity style={styles.restImageStyle} />
+              <TouchableOpacity style={styles.restImageStyle} />
+              <TouchableOpacity style={styles.restImageStyle} />
+              <TouchableOpacity style={styles.restImageStyle} />
+              <TouchableOpacity style={styles.restImageStyle} />
+              <TouchableOpacity style={styles.restImageStyle} />
+            </ScrollView>
+          </View>
+          <View style={styles.detailsStyle}>
+            <TextInput
+              placeholder="Product Name"
+              placeholderTextColor="#dddddd"
+            />
+          </View>
+          <View style={styles.detailsStyle}>
+            <TextInput
+              placeholder="Product Price"
+              placeholderTextColor="#dddddd"
+            />
+          </View>
+          <View style={styles.detailsStyle}>
+            <TextInput placeholder="Condition" placeholderTextColor="#dddddd" />
+          </View>
+          <View style={styles.detailsStyle}>
+            <TextInput
+              placeholder="Discription"
+              placeholderTextColor="#dddddd"
+            />
+          </View>
+          <View style={styles.detailsStyle}>
+            <TextInput placeholder="Location" placeholderTextColor="#dddddd" />
+          </View>
+          <View style={styles.checkBoxContainer}>
+            <CheckBox
+              style={styles.checkbox}
+              value={isSelected}
+              onValueChange={setSelection}
+            />
+            <Text style={styles.label}>Create Chat Room</Text>
+          </View>
+        </View>
+        <View style={styles.iconContainer}>
+          <TouchableOpacity style={styles.iconStyle}>
+            <AntDesign name="delete" size={40} color="#3b75df" />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.restImageStyle} />
-          <TouchableOpacity style={styles.restImageStyle} />
-          <TouchableOpacity style={styles.restImageStyle} />
+          <TouchableOpacity
+            style={styles.iconStyle}
+            onPress={() => navigation.navigate("AdPosted")}
+          >
+            <AntDesign name="check" size={40} color="#3b75df" />
+          </TouchableOpacity>
         </View>
-        <View style={styles.detailsStyle}>
-          <TextInput
-            placeholder="Product Name"
-            placeholderTextColor="#dddddd"
-          />
-        </View>
-        <View style={styles.detailsStyle}>
-          <TextInput
-            placeholder="Product Price"
-            placeholderTextColor="#dddddd"
-          />
-        </View>
-        <View style={styles.detailsStyle}>
-          <TextInput placeholder="Condition" placeholderTextColor="#dddddd" />
-        </View>
-        <View style={styles.detailsStyle}>
-          <TextInput placeholder="Discription" placeholderTextColor="#dddddd" />
-        </View>
-        <View style={styles.detailsStyle}>
-          <TextInput placeholder="Location" placeholderTextColor="#dddddd" />
-        </View>
-        <View style={styles.checkBoxContainer}>
-          <CheckBox
-            style={styles.checkbox}
-            value={isSelected}
-            onValueChange={setSelection}
-          />
-          <Text style={styles.label}>Create Chat Room</Text>
-        </View>
-      </View>
-      <View style={styles.iconContainer}>
-        <TouchableOpacity style={styles.iconStyle}>
-          <AntDesign name="delete" size={40} color="#3b75df" />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.iconStyle}
-          onPress={() => navigation.navigate("YourAds")}
-        >
-          <AntDesign name="check" size={40} color="#3b75df" />
-        </TouchableOpacity>
-      </View>
-    </KeyboardAwareScrollView>
+      </KeyboardAwareScrollView>
+    </ScrollView>
   );
 };
 
@@ -90,7 +105,7 @@ export default NewAd;
 
 const styles = StyleSheet.create({
   topContainer: {
-    // flex:1,
+    flex: 1,
     justifyContent: "center",
     alignItems: "center",
     marginTop: 10,
@@ -99,6 +114,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
+    width: responsiveWidth(91),
   },
   restImageStyle: {
     justifyContent: "center",
@@ -127,10 +143,11 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   iconContainer: {
-    flex: 1,
+    // flex: 1,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-around",
+    marginVertical: 30,
   },
   iconStyle: {
     alignItems: "center",

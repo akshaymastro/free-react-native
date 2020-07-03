@@ -5,10 +5,20 @@ import TopBar from "../Components/Wrapper/Topbar";
 import SignIn from "./SignIn";
 import SignUp from "./Signup";
 import { CommonStyle } from "../styles/common";
+import { ScrollView } from "react-native-gesture-handler";
+import { responsiveWidth } from "react-native-responsive-dimensions";
 
-const FirstRoute = (props) => <SignIn {...props} />;
+const FirstRoute = (props) => (
+  <ScrollView>
+    <SignIn {...props} />
+  </ScrollView>
+);
 
-const SecondRoute = (props) => <SignUp {...props}/>;
+const SecondRoute = (props) => (
+  <ScrollView>
+    <SignUp {...props} />
+  </ScrollView>
+);
 
 const initialLayout = { width: Dimensions.get("window").width };
 

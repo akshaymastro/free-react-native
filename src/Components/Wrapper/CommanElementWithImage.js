@@ -24,7 +24,7 @@ import { useNavigation } from "@react-navigation/native";
 
 import ToggleSwitch from "toggle-switch-react-native";
 
-const CommanElement = (props) => {
+const CommanElementWithImage = (props) => {
   const navigation = useNavigation();
   return (
     <View style={styles.topContainer}>
@@ -34,10 +34,12 @@ const CommanElement = (props) => {
           onPress={() => navigation.navigate(item.path)}
         >
           <View style={{ alignItems: "center", flexDirection: "row" }}>
-            <Image
+            <TouchableOpacity style={styles.imageContainer}>
+              {/* <Image
               source={require("../../../assets/yourad.png")}
               style={styles.imageStyle}
-            />
+            /> */}
+            </TouchableOpacity>
             <Text style={styles.textLable}>{item.name}</Text>
           </View>
           <View style={{ alignItems: "center" }}>
@@ -50,7 +52,7 @@ const CommanElement = (props) => {
   );
 };
 
-export default CommanElement;
+export default CommanElementWithImage;
 
 const styles = StyleSheet.create({
   topContainer: {
@@ -74,12 +76,20 @@ const styles = StyleSheet.create({
   },
   textLable1: {
     color: "#9c9c9c",
-    paddingBottom: 10,
     fontSize: 10,
+    paddingBottom: 9,
   },
   imageStyle: {
     width: responsiveWidth(15),
     height: responsiveHeight(8),
     resizeMode: "contain",
+  },
+  imageContainer: {
+    width: responsiveWidth(15),
+    height: responsiveHeight(7.5),
+    borderRadius: 50,
+    resizeMode: "contain",
+    backgroundColor: "#81afe5",
+    margin: 10,
   },
 });
