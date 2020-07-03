@@ -12,13 +12,7 @@ import {
   ScrollView,
 } from "react-native";
 
-import {
-  Ionicons,
-  SimpleLineIcons,
-  FontAwesome,
-  MaterialIcons,
-  AntDesign,
-} from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 import {
   responsiveWidth,
   responsiveHeight,
@@ -53,7 +47,6 @@ export default Home;
 const styles = StyleSheet.create({
   topContainer: {
     flex: 1,
-    // paddingTop: 20,
   },
   container: {
     flexDirection: "row",

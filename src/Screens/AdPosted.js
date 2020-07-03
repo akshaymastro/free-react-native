@@ -1,29 +1,11 @@
 import React from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  Image,
-  TextInput,
-  Button,
-  StyleSheet,
-  ScrollView,
-} from "react-native";
+import { View, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
 import {
   responsiveHeight,
   responsiveWidth,
 } from "react-native-responsive-dimensions";
-import {
-  Ionicons,
-  SimpleLineIcons,
-  FontAwesome,
-  MaterialIcons,
-  AntDesign,
-} from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { notificationsVariable } from "../utils/common";
-
-import CommanElement from "../Components/Wrapper/CommanElement";
 
 const AdPosted = (props) => {
   const navigation = useNavigation();
@@ -38,7 +20,10 @@ const AdPosted = (props) => {
           </Text>
           <TouchableOpacity
             style={styles.buttonStyle}
-            onPress={() => navigation.navigate("YourAds")}
+            onPress={() => {
+              navigation.navigate("YourAds");
+              props.onClose();
+            }}
           >
             <Text style={styles.textStyle}>OK</Text>
           </TouchableOpacity>

@@ -6,7 +6,6 @@ import SignIn from "./SignIn";
 import SignUp from "./Signup";
 import { CommonStyle } from "../styles/common";
 import { ScrollView } from "react-native-gesture-handler";
-import { responsiveWidth } from "react-native-responsive-dimensions";
 
 const FirstRoute = (props) => (
   <ScrollView>

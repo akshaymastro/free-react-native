@@ -8,7 +8,6 @@ import {
   Button,
   StyleSheet,
 } from "react-native";
-import { UserStyle } from "../styles/UserStyle";
 import { useNavigation } from "@react-navigation/native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import {

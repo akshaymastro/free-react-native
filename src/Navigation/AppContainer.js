@@ -173,7 +173,6 @@ const HomeRoute = () => {
           },
           headerTintColor: "#fff",
           headerTitle: "Your Ads",
-          headerLeft: null,
         }}
       />
       <StackNav.Screen
@@ -236,12 +235,12 @@ const MessageRoute = () => {
         name="ChatScreen"
         component={ChatScreen}
         options={{
-          headerShown: false,
-          headerTitleAlign: "center",
+          headerShown: true,
           headerStyle: {
             backgroundColor: "#3b75df",
           },
           headerTintColor: "#fff",
+          headerTitle: "Alice",
         }}
       />
     </StackNav.Navigator>

@@ -46,13 +46,19 @@ const ChatHome = (props) => {
         <TouchableOpacity onPress={() => setComponent(false)}>
           <Image
             source={require("../../assets/message.png")}
-            style={styles.imageStyle}
+            style={[
+              styles.imageStyle,
+              { tintColor: !showComponent ? "#3b75df" : "#b2d2f4" },
+            ]}
           />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => setComponent(true)}>
           <Image
             source={require("../../assets/group.png")}
-            style={styles.imageStyle}
+            style={[
+              styles.imageStyle,
+              { tintColor: !showComponent ? "#b2d2f4" : "#3b75df" },
+            ]}
           />
         </TouchableOpacity>
       </View>

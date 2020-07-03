@@ -241,6 +241,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 20,
     borderTopRightRadius: 20,
     borderBottomRightRadius: 2,
+    paddingHorizontal: 20,
     // border
   },
   balloon: {

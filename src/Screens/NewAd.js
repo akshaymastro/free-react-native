@@ -15,17 +15,14 @@ import {
   responsiveHeight,
   responsiveWidth,
 } from "react-native-responsive-dimensions";
-import {
-  Ionicons,
-  SimpleLineIcons,
-  FontAwesome,
-  MaterialIcons,
-  AntDesign,
-} from "@expo/vector-icons";
+import { Ionicons, AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import ModalWrapper from "../Components/Wrapper/ModalWrapper";
+import AdPosted from "./AdPosted";
 
 const NewAd = (props) => {
   const [isSelected, setSelection] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
   const navigation = useNavigation();
   return (
     <ScrollView>
@@ -91,12 +88,15 @@ const NewAd = (props) => {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.iconStyle}
-            onPress={() => navigation.navigate("AdPosted")}
+            onPress={() => setOpenModal(!openModal)}
           >
             <AntDesign name="check" size={40} color="#3b75df" />
           </TouchableOpacity>
         </View>
       </KeyboardAwareScrollView>
+      <ModalWrapper open={openModal} onClose={() => setOpenModal(!openModal)}>
+        <AdPosted onClose={() => setOpenModal(!openModal)} />
+      </ModalWrapper>
     </ScrollView>
   );
 };

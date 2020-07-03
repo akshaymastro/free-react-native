@@ -70,15 +70,6 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
   },
-  imageStyle: {
-    // resizeMode: "cover",
-    // height: responsiveHeight(5),
-    // width: responsiveWidth(8),
-  },
-  imageStyle2: {
-    // height: responsiveHeight(5),
-    // width: responsiveWidth(8),
-  },
   topcontainer: {
     flexDirection: "row",
     backgroundColor: "#3b75df",

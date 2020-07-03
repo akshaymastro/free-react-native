@@ -3,9 +3,6 @@ import {
   View,
   Text,
   TouchableOpacity,
-  Image,
-  TextInput,
-  Button,
   StyleSheet,
   ScrollView,
 } from "react-native";
@@ -13,13 +10,6 @@ import {
   responsiveHeight,
   responsiveWidth,
 } from "react-native-responsive-dimensions";
-import {
-  Ionicons,
-  SimpleLineIcons,
-  FontAwesome,
-  MaterialIcons,
-  AntDesign,
-} from "@expo/vector-icons";
 
 import { yourAdsVariable } from "../utils/common";
 
