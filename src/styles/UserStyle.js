@@ -64,7 +64,7 @@ export const UserStyle = StyleSheet.create({
   },
   textInput: {
     height: responsiveHeight(8),
-    width: responsiveWidth(70),
+    width: responsiveWidth(45),
     textAlign: "center",
     borderRadius: 10,
     marginVertical: 8,

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -9,7 +9,9 @@ import {
   StyleSheet,
   CheckBox,
   ScrollView,
+  AsyncStorage,
 } from "react-native";
+import { connect } from "react-redux";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import {
   responsiveHeight,
@@ -19,11 +21,57 @@ import { Ionicons, AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import ModalWrapper from "../Components/Wrapper/ModalWrapper";
 import AdPosted from "./AdPosted";
+import { createAd } from "../../redux/actions/AdActions";
+
+const initialState = {
+  productName: "",
+  productPrice: 0,
+  condition: "",
+  adRating: 0,
+  description: "",
+};
 
 const NewAd = (props) => {
+  const { createAd } = props;
+  const [formState, setFormState] = useState(initialState);
   const [isSelected, setSelection] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+
   const navigation = useNavigation();
+
+  const onHandleChange = (key, value) => {
+    setFormState({ ...formState, [key]: value });
+  };
+
+  const onSubmit = async () => {
+    const { createAd } = props;
+    const token = await AsyncStorage.getItem("token");
+    console.log(token, "userToken");
+    console.log({ ...formState }, "formState");
+    let params = {
+      productName: formState.productName,
+      productPrice: parseInt(formState.productPrice),
+      condition: formState.condition,
+      adRating: parseInt(formState.adRating),
+      description: formState.description,
+    };
+    let adPost = await createAd(params, token);
+    if (adPost.isSuccess) {
+      setOpenModal(!openModal);
+    }
+
+    console.log(adPost, "vvvvvv");
+  };
+
+  // useEffect(() => {
+  //   async function test() {
+  //     const user_token = await AsyncStorage.getItem("token");
+  //     return user_token;
+  //     // console.log(user_token, "tokentoken");
+  //   }
+  //   test();
+  // }, []);
+
   return (
     <ScrollView>
       <KeyboardAwareScrollView
@@ -53,21 +101,33 @@ const NewAd = (props) => {
             <TextInput
               placeholder="Product Name"
               placeholderTextColor="#dddddd"
+              value={formState.productName}
+              onChangeText={(val) => onHandleChange("productName", val)}
             />
           </View>
           <View style={styles.detailsStyle}>
             <TextInput
+              keyboardType="numeric"
               placeholder="Product Price"
               placeholderTextColor="#dddddd"
+              value={formState.productPrice}
+              onChangeText={(val) => onHandleChange("productPrice", val)}
             />
           </View>
           <View style={styles.detailsStyle}>
-            <TextInput placeholder="Condition" placeholderTextColor="#dddddd" />
+            <TextInput
+              placeholder="Condition"
+              placeholderTextColor="#dddddd"
+              value={formState.condition}
+              onChangeText={(val) => onHandleChange("condition", val)}
+            />
           </View>
           <View style={styles.detailsStyle}>
             <TextInput
               placeholder="Discription"
               placeholderTextColor="#dddddd"
+              value={formState.description}
+              onChangeText={(val) => onHandleChange("description", val)}
             />
           </View>
           <View style={styles.detailsStyle}>
@@ -88,7 +148,8 @@ const NewAd = (props) => {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.iconStyle}
-            onPress={() => setOpenModal(!openModal)}
+            onPress={onSubmit}
+            // onPress={() => setOpenModal(!openModal)}
           >
             <AntDesign name="check" size={40} color="#3b75df" />
           </TouchableOpacity>
@@ -101,7 +162,11 @@ const NewAd = (props) => {
   );
 };
 
-export default NewAd;
+const mapDispatchToProps = {
+  createAd,
+};
+
+export default connect(null, mapDispatchToProps)(NewAd);
 
 const styles = StyleSheet.create({
   topContainer: {

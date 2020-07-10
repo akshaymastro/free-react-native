@@ -1,0 +1,20 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-olysea-dev-141114-authRole",
+            "UnauthRoleArn": "arn:aws:iam::267700209287:role/amplify-olysea-dev-141114-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::267700209287:role/amplify-olysea-dev-141114-authRole",
+            "Region": "us-east-2",
+            "DeploymentBucketName": "amplify-olysea-dev-141114-deployment",
+            "UnauthRoleName": "amplify-olysea-dev-141114-unauthRole",
+            "StackName": "amplify-olysea-dev-141114",
+            "StackId": "arn:aws:cloudformation:us-east-2:267700209287:stack/amplify-olysea-dev-141114/a18990b0-c02d-11ea-a050-065e408dbd50",
+            "AmplifyAppId": "du88ni7n7bn2t"
+        },
+        "categories": {
+            "auth": {
+                "olysea788414a1": {}
+            }
+        }
+    }
+}

@@ -20,8 +20,9 @@ import AdPosted from "../Screens/AdPosted";
 import YourAds from "../Screens/YourAds";
 import ChatScreen from "../Screens/chatScreen";
 import Map from "../Screens/Map";
-
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import StartupScreen from "../StartUpScreen";
+
 const StackNav = createStackNavigator();
 const Tab = createBottomTabNavigator();
 const HomeRoute = () => {
@@ -280,6 +281,11 @@ const TabRoute = () => {
 const MainRoute = () => {
   return (
     <StackNav.Navigator>
+      <StackNav.Screen
+        name="StartupScreen"
+        component={StartupScreen}
+        options={{ headerShown: false }}
+      />
       <StackNav.Screen
         name="SignUpSignIn"
         component={SignUpSignIn}

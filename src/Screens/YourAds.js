@@ -1,22 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
   TouchableOpacity,
   StyleSheet,
   ScrollView,
+  AsyncStorage,
 } from "react-native";
 import {
   responsiveHeight,
   responsiveWidth,
 } from "react-native-responsive-dimensions";
+import { connect } from "react-redux";
 
 import { yourAdsVariable } from "../utils/common";
 
 import CommanElement from "../Components/Wrapper/CommanElement";
 
+import { getUserAd, getAdById } from "../../redux/actions/AdActions";
+
 const YourAds = (props) => {
   const [showComponent, setComponent] = useState(false);
+
+  useEffect(() => {
+    const { getAdById, getUserAd } = props;
+    async function Data() {
+      const token = await AsyncStorage.getItem("token");
+      console.log(token);
+      const userdata = await getUserAd(token);
+      console.log(userdata, "tokentoken");
+    }
+    Data();
+  }, []);
 
   return (
     <View style={styles.TopContainer}>
@@ -42,7 +57,16 @@ const YourAds = (props) => {
   );
 };
 
-export default YourAds;
+// const mapStateToPropes = {
+
+// };
+
+const mapDispatchToProps = {
+  getAdById,
+  getUserAd,
+};
+
+export default connect(null, mapDispatchToProps)(YourAds);
 
 const styles = StyleSheet.create({
   TopContainer: {
