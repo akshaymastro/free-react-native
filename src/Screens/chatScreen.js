@@ -94,7 +94,6 @@ export default class ChatScreen extends Component {
             return item.id;
           }}
           renderItem={(message) => {
-            console.log(item);
             const item = message.item;
             let inMessage = item.type === "in";
             let styleItem = inMessage ? styles.item : styles.item2;

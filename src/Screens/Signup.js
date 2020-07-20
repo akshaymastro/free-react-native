@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -7,7 +7,6 @@ import {
   TextInput,
   Alert,
   ActivityIndicator,
-  AsyncStorage,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
@@ -23,12 +22,21 @@ const initialState = {
 export default (props) => {
   const [formState, setFormState] = useState(initialState);
   const [isLoading, setLoading] = useState(false);
+  const [disable, setDisable] = useState(true);
   const navigation = useNavigation();
 
   const onHandleChange = (key, value) => {
     setFormState({ ...formState, [key]: value });
   };
-
+  useEffect(() => {
+    if (
+      formState.Username !== "" &&
+      formState.password !== "" &&
+      formState.confirmPassword !== ""
+    ) {
+      setDisable(false);
+    }
+  }, [formState]);
   const onSubmit = async () => {
     try {
       const FormState = { ...formState };
@@ -39,17 +47,13 @@ export default (props) => {
       const user = await Auth.signUp({
         username: FormState.Username,
         password: FormState.password,
-        profile: "",
-        gender: "",
-        email: "",
-        picture: "",
       });
-      await AsyncStorage.setItem(user);
       setLoading(false);
-      navigation.navigate("SignUpSignIn");
       Alert.alert("User Created Successfully");
+      setFormState(initialState);
     } catch (error) {
       setLoading(false);
+      console.log(error);
       Alert.alert(error.message);
     }
   };
@@ -104,7 +108,11 @@ export default (props) => {
             onChangeText={(val) => onHandleChange("confirmPassword", val)}
           />
         </View>
-        <TouchableOpacity style={UserStyle.buttonStyle} onPress={onSubmit}>
+        <TouchableOpacity
+          style={UserStyle.buttonStyle}
+          onPress={onSubmit}
+          disabled={disable}
+        >
           {isLoading ? (
             <ActivityIndicator animating={isLoading} />
           ) : (

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -8,12 +8,16 @@ import {
   Button,
   StyleSheet,
   ScrollView,
+  AsyncStorage,
+  Alert,
 } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import {
   responsiveHeight,
   responsiveWidth,
 } from "react-native-responsive-dimensions";
+import { connect } from "react-redux";
+import { getEditData, editAd } from "../redux/actions/AdActions";
 import { Ionicons, AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import ModalWrapper from "../Components/Wrapper/ModalWrapper";
@@ -21,7 +25,50 @@ import AdPosted from "./AdPosted";
 
 const EditAd = (props) => {
   const navigation = useNavigation();
+  const itemData = props?.route?.params?.itemData;
+  const initialState = {
+    productName: itemData.productName,
+    productPrice: itemData.productPrice,
+    condition: itemData.condition,
+    adRating: itemData.adRating,
+    description: itemData.description,
+  };
+  const [formState, setFormState] = useState(initialState);
   const [openModal, setOpenModal] = useState(false);
+
+  const onHandleChange = (key, value) => {
+    setFormState({ ...formState, [key]: value });
+  };
+
+  // useEffect(() => {
+  //   const id = props?.route?.params?.id;
+  //   console.log(id, "id");
+  //   async function getData() {
+  //     await props.getEditData(id);
+  //     console.log();
+  //     setFormState({ ...formState });
+  //   }
+  //   getData();
+  // }, []);
+
+  const onHandleSubmit = async () => {
+    const { editAd } = props;
+    // const token = await AsyncStorage.getItem("token");
+    const id = await itemData.id;
+    let params = {
+      productName: formState.productName,
+      productPrice: parseInt(formState.productPrice),
+      condition: formState.condition,
+      adRating: parseInt(formState.adRating),
+      description: formState.description,
+    };
+    let adData = await editAd(id, params);
+    if (adData.isSuccess) {
+      setOpenModal(!openModal);
+    }
+    console.log(error, "error");
+    Alert.alert(error.message);
+  };
   return (
     <ScrollView>
       <KeyboardAwareScrollView
@@ -40,6 +87,8 @@ const EditAd = (props) => {
             <View style={styles.textInputContiner1}>
               <TextInput
                 style={styles.textInput}
+                value={formState.productName}
+                onChangeText={(value) => onHandleChange("productName", value)}
                 placeholder="Ad Name"
                 placeholderTextColor="#000"
               />
@@ -54,6 +103,8 @@ const EditAd = (props) => {
             <View style={styles.textInputContiner1}>
               <TextInput
                 style={styles.textInput}
+                value={formState.description}
+                onChangeText={(value) => onHandleChange("description", value)}
                 placeholder="ADDITIONAL DETAILS"
                 placeholderTextColor="#000"
               />
@@ -96,10 +147,7 @@ const EditAd = (props) => {
           >
             <AntDesign name="delete" size={40} color="#3b75df" />
           </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.iconStyle}
-            onPress={() => setOpenModal(!openModal)}
-          >
+          <TouchableOpacity style={styles.iconStyle} onPress={onHandleSubmit}>
             <AntDesign name="check" size={40} color="#3b75df" />
           </TouchableOpacity>
         </View>
@@ -110,8 +158,15 @@ const EditAd = (props) => {
     </ScrollView>
   );
 };
+const mapStateToProps = (state) => ({
+  ad: state.Ad,
+});
+const mapDispatchToProps = {
+  getEditData,
+  editAd,
+};
 
-export default EditAd;
+export default connect(mapStateToProps, mapDispatchToProps)(EditAd);
 
 const styles = StyleSheet.create({
   topContainer: {

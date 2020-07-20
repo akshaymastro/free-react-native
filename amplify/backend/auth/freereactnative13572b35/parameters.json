@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "olysea788414a1_identitypool_788414a1",
+    "identityPoolName": "freereactnative13572b35_identitypool_13572b35",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "olysea788414a1",
-    "userPoolName": "olysea788414a1_userpool_788414a1",
+    "resourceNameTruncated": "freere13572b35",
+    "userPoolName": "freereactnative13572b35_userpool_13572b35",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -28,10 +28,10 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "olysea788414a1_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "freere13572b35_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "788414a1",
-    "resourceName": "olysea788414a1",
+    "sharedId": "13572b35",
+    "resourceName": "freereactnative13572b35",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
@@ -46,9 +46,6 @@
         ]
     },
     "useDefault": "default",
-    "usernameAttributes": [
-        "email"
-    ],
     "userPoolGroupList": [],
     "dependsOn": []
 }

@@ -12,6 +12,13 @@ export default (state = {}, action) => {
         ...state,
         editAd: action.payload,
       };
+    case Ad.GET_EDIT_AD:
+      return {
+        ...state,
+        getEditAdd: state.getUserAd?.data.find(
+          (item, key) => item.id === action.payload && item
+        ),
+      };
     case Ad.GET_USER_AD:
       return {
         ...state,

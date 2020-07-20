@@ -5,12 +5,12 @@ export const homeVariable = [
     path: "Category",
   },
   {
-    name: "buy",
+    name: "Buy",
     image: require("../../assets/buy.png"),
     path: "Category",
   },
   {
-    name: "AdDetails",
+    name: "Your Ads",
     image: require("../../assets/manage.png"),
     path: "YourAds",
   },
@@ -18,8 +18,8 @@ export const homeVariable = [
 
 export const categoryVariable = [
   {
-    name: "Electroics",
-    path: "Electroics",
+    name: "Electronics",
+    path: "Electronics",
   },
   {
     name: "Kids",
@@ -31,39 +31,39 @@ export const categoryVariable = [
   },
   {
     name: "Clothes",
-    path: "Electroics",
+    path: "Electronics",
   },
   {
     name: "Beauty",
-    path: "Electroics",
+    path: "Electronics",
   },
   {
     name: "Bikes",
-    path: "Electroics",
+    path: "Electronics",
   },
   {
     name: "Books",
-    path: "Electroics",
+    path: "Electronics",
   },
   {
     name: "Farm & Garden",
-    path: "Electroics",
+    path: "Electronics",
   },
   {
     name: "Garage Sale",
-    path: "Electroics",
+    path: "Electronics",
   },
   {
     name: "Jewwlery",
-    path: "Electroics",
+    path: "Electronics",
   },
   {
     name: "Music",
-    path: "Electroics",
+    path: "Electronics",
   },
   {
     name: "Sports",
-    path: "Electroics",
+    path: "Electronics",
   },
   {
     name: "Services",
@@ -75,7 +75,7 @@ export const categoryVariable = [
   },
   {
     name: "Misc",
-    path: "Electroics",
+    path: "Electronics",
   },
 ];
 

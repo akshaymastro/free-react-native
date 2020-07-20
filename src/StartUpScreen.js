@@ -8,44 +8,31 @@ import {
 import { useDispatch } from "react-redux";
 import moment from "moment";
 import { Auth } from "aws-amplify";
+import jwt_decode from "jwt-decode";
 
 const StartupScreen = (props) => {
   const dispatch = useDispatch();
   useEffect(() => {
     const tryLogin = async () => {
-      // console.log("authenticate");
-      let userData;
-      const usersession = await Auth.currentUserInfo();
-      // console.log(userData, "startupscreen");
-      if (!usersession) {
-        // console.log("not useredata");
+      const token = await AsyncStorage.getItem("token");
+      if (!token) {
         props.navigation.navigate("SignUpSignIn");
         return;
       } else {
-        userData = await Auth.currentAuthenticatedUser();
-        // console.log(userData, "useerrData");
-        const { signInUserSession } = userData;
-        await AsyncStorage.setItem("token", signInUserSession.idToken.jwtToken);
-        if (
-          Date.now() >= signInUserSession.idToken.payload.exp * 1000 ||
-          !signInUserSession.idToken.jwtToken
-        ) {
-          // console.log("not exp");
+        const decodedUser = await jwt_decode(token);
+        if (Date.now() >= decodedUser.exp * 1000) {
           props.navigation.navigate("SignUpSignIn");
           return;
         }
-        let exptime = moment(signInUserSession.idToken.payload.exp).format(
-          "hh:mm:ss a"
-        );
-        let currenttime = new Date().getTime();
-        let expirationTime = exptime - currenttime;
+        let expTime = moment(decodedUser.exp).format("hh:mm:ss a");
+        let currentTime = new Date().getTime();
+        let expirationTime = expTime - currentTime;
         props.navigation.navigate("Home");
         if (expirationTime === 0) {
           Auth.signOut();
           props.navigation("SignUpSignIn");
         }
       }
-      //   dispatch(authActions.authenticate(userId, token, expirationTime));
     };
 
     tryLogin();

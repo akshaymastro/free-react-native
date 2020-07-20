@@ -17,11 +17,12 @@ import {
   responsiveHeight,
   responsiveWidth,
 } from "react-native-responsive-dimensions";
-import { Ionicons, AntDesign } from "@expo/vector-icons";
+import { Ionicons, AntDesign, FontAwesome5 } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import ModalWrapper from "../Components/Wrapper/ModalWrapper";
 import AdPosted from "./AdPosted";
-import { createAd } from "../../redux/actions/AdActions";
+import { createAd } from "../redux/actions/AdActions";
+// import * as Location from "expo-location";
 
 const initialState = {
   productName: "",
@@ -32,12 +33,26 @@ const initialState = {
 };
 
 const NewAd = (props) => {
-  const { createAd } = props;
+  // const [location, setLocation] = useState(null);
   const [formState, setFormState] = useState(initialState);
   const [isSelected, setSelection] = useState(false);
   const [openModal, setOpenModal] = useState(false);
 
   const navigation = useNavigation();
+
+  // useEffect(() => {
+  //   async function Data() {
+  //     let { status } = await Location.requestPermissionsAsync();
+  //     if (status !== "granted") {
+  //       setErrorMsg("Permission to access location was denied");
+  //     }
+
+  //     let location = await Location.getCurrentPositionAsync({});
+  //     setLocation(location);
+  //     console.log(location, "location");
+  //   }
+  //   Data();
+  // }, []);
 
   const onHandleChange = (key, value) => {
     setFormState({ ...formState, [key]: value });
@@ -45,32 +60,22 @@ const NewAd = (props) => {
 
   const onSubmit = async () => {
     const { createAd } = props;
+    const { categoryId, subCategoryId } = props.route.params;
     const token = await AsyncStorage.getItem("token");
-    console.log(token, "userToken");
-    console.log({ ...formState }, "formState");
     let params = {
       productName: formState.productName,
       productPrice: parseInt(formState.productPrice),
       condition: formState.condition,
       adRating: parseInt(formState.adRating),
       description: formState.description,
+      categoryId,
+      subCategoryId,
     };
     let adPost = await createAd(params, token);
     if (adPost.isSuccess) {
       setOpenModal(!openModal);
     }
-
-    console.log(adPost, "vvvvvv");
   };
-
-  // useEffect(() => {
-  //   async function test() {
-  //     const user_token = await AsyncStorage.getItem("token");
-  //     return user_token;
-  //     // console.log(user_token, "tokentoken");
-  //   }
-  //   test();
-  // }, []);
 
   return (
     <ScrollView>
@@ -131,6 +136,9 @@ const NewAd = (props) => {
             />
           </View>
           <View style={styles.detailsStyle}>
+            <TouchableOpacity>
+              <FontAwesome5 name="location-arrow" size={25} color="#3b75df" />
+            </TouchableOpacity>
             <TextInput placeholder="Location" placeholderTextColor="#dddddd" />
           </View>
           <View style={styles.checkBoxContainer}>

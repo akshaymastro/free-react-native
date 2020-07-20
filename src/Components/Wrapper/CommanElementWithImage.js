@@ -28,9 +28,10 @@ const CommanElementWithImage = (props) => {
   const navigation = useNavigation();
   return (
     <View style={styles.topContainer}>
-      {props.dataArray?.map((item) => (
+      {props.dataArray?.map((item, key) => (
         <TouchableOpacity
           style={styles.container}
+          key={key}
           onPress={() => navigation.navigate(item.path)}
         >
           <View style={{ alignItems: "center", flexDirection: "row" }}>

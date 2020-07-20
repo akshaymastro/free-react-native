@@ -13,6 +13,7 @@ export const getUserAd = (token) =>
       Authorization: token,
     },
   });
+
 export const getAdById = (id, token) =>
   client.get(`get-ads-byId/${id}`, {
     headers: {
@@ -20,9 +21,4 @@ export const getAdById = (id, token) =>
     },
   });
 
-export const editAd = (id, ad, token) =>
-  client.put(`get-ads-byId/${id}`, ad, {
-    headers: {
-      Authorization: token,
-    },
-  });
+export const editAd = (id, ad) => client.put(`updateAd/${id}`, ad);

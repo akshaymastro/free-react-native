@@ -18,7 +18,17 @@ export default function GridTemplate(props) {
       {props.category ? (
         <TouchableOpacity
           style={styles.containerTab}
-          onPress={() => props.navigation.navigate(props.path)}
+          onPress={() => {
+            props.subCategoryId
+              ? props.navigation.navigate("NewAd", {
+                  categoryId: props.categoryId,
+                  subCategoryId: props.subCategoryId,
+                })
+              : props.navigation.navigate("Electronics", {
+                  categoryId: props.categoryId,
+                  title: props.name,
+                });
+          }}
         >
           <View style={styles.categoryContainer}>
             <Text style={styles.categoryText}>{props.name}</Text>
@@ -27,7 +37,9 @@ export default function GridTemplate(props) {
       ) : (
         <TouchableOpacity
           style={styles.imageContainer}
-          onPress={() => props.navigation.navigate(props.path)}
+          onPress={() =>
+            props.navigation.navigate(props.path, { title: props.name })
+          }
         >
           <Image
             source={props.image}
@@ -75,3 +87,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
+
+// props.categoryListData.data.map((item, key) => {
+//   return (
+//     <TouchableOpacity
+//       style={styles.containerTab}
+//       // onPress={() => props.navigation.navigate(props.path)}
+//     >
+//       <View style={styles.categoryContainer}>
+//         <Text style={styles.categoryText}>{item.categoryName}</Text>
+//       </View>
+//     </TouchableOpacity>
+//   );
+// })

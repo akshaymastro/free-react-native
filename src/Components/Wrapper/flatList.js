@@ -1,6 +1,7 @@
 import React from "react";
-import { FlatList } from "react-native";
+import { FlatList, View } from "react-native";
 import GridTemplate from "./gridWrapper";
+import MainHeader from "../Wrapper/MainHeader";
 
 export default (props) => {
   return (
@@ -17,16 +18,18 @@ export default (props) => {
         // marginTop: 10,
         margin: 10,
       }}
-      renderItem={({ item }) => (
+      renderItem={({ item, key }) => (
         <GridTemplate
-          name={item.name}
+          categoryId={item.catId || item.categoryId}
+          subCategoryId={item.subCatId}
+          name={item.categoryName || item.subCategoryName || item.name}
           image={item.image}
           path={item.path}
           category={props.category}
           {...props}
         />
       )}
-      keyExtractor={(item) => item.name}
+      keyExtractor={(item, key) => item.name}
     />
   );
 };

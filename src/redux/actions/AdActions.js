@@ -28,11 +28,18 @@ export const getAdById = (id, token) => async (dispatch) => {
   return res.data;
 };
 
-export const editAd = (id, ad, token) => async (dispatch) => {
-  const res = await AdAPI.editAd(id, ad, token);
+export const editAd = (id, ad) => async (dispatch) => {
+  const res = await AdAPI.editAd(id, ad);
   dispatch({
     type: Ad.UPDATE_AD,
     payload: res.data,
   });
   return res.data;
+};
+
+export const getEditData = (id) => async (dispatch) => {
+  dispatch({
+    type: Ad.GET_EDIT_AD,
+    payload: id,
+  });
 };

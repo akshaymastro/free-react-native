@@ -28,17 +28,18 @@ const CommanElement = (props) => {
   const navigation = useNavigation();
   return (
     <View style={styles.topContainer}>
-      {props.dataArray?.map((item) => (
+      {props?.dataArray?.map((item, key) => (
         <TouchableOpacity
           style={styles.container}
-          onPress={() => navigation.navigate(item.path)}
+          key={key}
+          onPress={() => navigation.navigate("EditAd", { itemData: item })}
         >
           <View style={{ alignItems: "center", flexDirection: "row" }}>
             <Image
               source={require("../../../assets/yourad.png")}
               style={styles.imageStyle}
             />
-            <Text style={styles.textLable}>{item.name}</Text>
+            <Text style={styles.textLable}>{item.productName}</Text>
           </View>
           <View style={{ alignItems: "center" }}>
             <Text style={styles.textLable1}>04:43 PM</Text>

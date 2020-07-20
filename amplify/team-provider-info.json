@@ -1,19 +1,19 @@
 {
     "dev": {
         "awscloudformation": {
-            "AuthRoleName": "amplify-olysea-dev-141114-authRole",
-            "UnauthRoleArn": "arn:aws:iam::267700209287:role/amplify-olysea-dev-141114-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::267700209287:role/amplify-olysea-dev-141114-authRole",
+            "AuthRoleName": "amplify-freereactnative-dev-103238-authRole",
+            "UnauthRoleArn": "arn:aws:iam::267700209287:role/amplify-freereactnative-dev-103238-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::267700209287:role/amplify-freereactnative-dev-103238-authRole",
             "Region": "us-east-2",
-            "DeploymentBucketName": "amplify-olysea-dev-141114-deployment",
-            "UnauthRoleName": "amplify-olysea-dev-141114-unauthRole",
-            "StackName": "amplify-olysea-dev-141114",
-            "StackId": "arn:aws:cloudformation:us-east-2:267700209287:stack/amplify-olysea-dev-141114/a18990b0-c02d-11ea-a050-065e408dbd50",
-            "AmplifyAppId": "du88ni7n7bn2t"
+            "DeploymentBucketName": "amplify-freereactnative-dev-103238-deployment",
+            "UnauthRoleName": "amplify-freereactnative-dev-103238-unauthRole",
+            "StackName": "amplify-freereactnative-dev-103238",
+            "StackId": "arn:aws:cloudformation:us-east-2:267700209287:stack/amplify-freereactnative-dev-103238/75533330-c658-11ea-ad3e-0a18862e0c0c",
+            "AmplifyAppId": "d3n65c3kl796ib"
         },
         "categories": {
             "auth": {
-                "olysea788414a1": {}
+                "freereactnative13572b35": {}
             }
         }
     }

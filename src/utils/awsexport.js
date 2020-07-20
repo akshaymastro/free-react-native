@@ -1,10 +1,18 @@
+import env from "./environment";
+const {
+  REGION,
+  USER_POOL_ID,
+  USER_POOL_WEB_CLIENT_ID,
+  IDENTITY_POOL_ID,
+  POOL_ARN,
+} = env;
+
 export const awsExport = {
   Auth: {
-    region: "us-east-2",
-    userPoolId: "us-east-2_iuCgEIyFZ",
-    userPoolWebClientId: "3v89sstu0u82eg8r9pj184jhn8",
-    identityPoolId: "us-east-2:9fdc09a7-5127-4dc7-a062-e3aae6cecd03",
-    poolArn:
-      "arn:aws:cognito-idp:us-east-2:267700209287:userpool/us-east-2_iuCgEIyFZ",
+    region: REGION,
+    userPoolId: USER_POOL_ID,
+    userPoolWebClientId: USER_POOL_WEB_CLIENT_ID,
+    identityPoolId: IDENTITY_POOL_ID,
+    poolArn: POOL_ARN,
   },
 };

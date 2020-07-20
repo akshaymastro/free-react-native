@@ -5,7 +5,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import SignUpSignIn from "../Screens/SignUpSignIn";
 import Home from "../Screens/Home";
 import Category from "../Screens/Category";
-import Electroics from "../Screens/Electroics";
+import Electronics from "../Screens/Electronics";
 import Kids from "../Screens/Kids";
 import Auto from "../Screens/Auto";
 import Services from "../Screens/Services";
@@ -22,6 +22,7 @@ import ChatScreen from "../Screens/chatScreen";
 import Map from "../Screens/Map";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import StartupScreen from "../StartUpScreen";
+// import MainHeader from "../Components/Wrapper/MainHeader";
 
 const StackNav = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -45,7 +46,7 @@ const HomeRoute = () => {
         name="Category"
         component={Category}
         options={{
-          headerShown: true,
+          headerShown: false,
           headerTitleAlign: "center",
           headerBackTitleVisible: false,
           headerStyle: {
@@ -56,16 +57,16 @@ const HomeRoute = () => {
         }}
       />
       <StackNav.Screen
-        name="Electroics"
-        component={Electroics}
+        name="Electronics"
+        component={Electronics}
         options={{
-          headerShown: true,
+          headerShown: false,
           headerTitleAlign: "center",
           headerStyle: {
             backgroundColor: "#3b75df",
           },
           headerTintColor: "#fff",
-          headerTitle: "Electroics",
+          headerTitle: "Electronics",
         }}
       />
       <StackNav.Screen
@@ -167,7 +168,7 @@ const HomeRoute = () => {
         name="YourAds"
         component={YourAds}
         options={{
-          headerShown: true,
+          headerShown: false,
           headerTitleAlign: "center",
           headerStyle: {
             backgroundColor: "#3b75df",
@@ -201,6 +202,18 @@ const HomeRoute = () => {
           headerTintColor: "#fff",
         }}
       />
+      {/* <StackNav.Screen
+        name="MainHeader"
+        component={MainHeader}
+        options={{
+          headerShown: false,
+          headerTitleAlign: "center",
+          headerStyle: {
+            backgroundColor: "#3b75df",
+          },
+          headerTintColor: "#fff",
+        }}
+      /> */}
     </StackNav.Navigator>
   );
 };

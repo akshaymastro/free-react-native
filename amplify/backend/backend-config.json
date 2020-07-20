@@ -1,6 +1,6 @@
 {
 	"auth": {
-		"olysea788414a1": {
+		"freereactnative13572b35": {
 			"service": "Cognito",
 			"providerPlugin": "awscloudformation",
 			"dependsOn": [],

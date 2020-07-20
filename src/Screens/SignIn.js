@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -24,7 +24,12 @@ export default (props) => {
   const navigation = useNavigation();
   const [formState, setFormState] = useState(initialState);
   const [isLoading, setLoading] = useState(false);
-
+  const [disabled, setDisable] = useState(true);
+  useEffect(() => {
+    if (formState.username !== "" && formState.password !== "") {
+      setDisable(false);
+    }
+  }, [formState]);
   const onHandleChange = (key, value) => {
     setFormState({ ...formState, [key]: value });
   };
@@ -35,20 +40,18 @@ export default (props) => {
       setLoading(true);
       let username = FormState.Username;
       let password = FormState.password;
-
       const user = await Auth.signIn(username, password);
-      // const data = await Auth.currentAuthenticatedUser();
-      // const token = await data.signInUserSession.idToken.jwtToken;
-      // // console.log(token, "testing");
-      // const uaerToken = await AsyncStorage.setItem("token", token);
-      // console.log(uaerToken, "uaetoken");
-      // const { signInUserSession } = data;
       setLoading(false);
+      await AsyncStorage.setItem(
+        "token",
+        user.signInUserSession.idToken.jwtToken
+      );
       Alert.alert("Successfully Login");
+      setFormState(initialState);
       navigation.navigate("Home");
     } catch (error) {
       setLoading(false);
-      console.log(error, "erorororor");
+      console.log(error, "error");
       Alert.alert(error.message);
     }
   };
@@ -57,8 +60,6 @@ export default (props) => {
     <KeyboardAwareScrollView
       resetScrollToCoords={{ x: 40, y: 0 }}
       contentContainerStyle={UserStyle.sigInView}
-      // scrollEnabled={false}
-      // extraScrollHeight={40}
       scrollEnabled={true}
     >
       <TouchableOpacity style={UserStyle.socialButton}>
@@ -102,7 +103,11 @@ export default (props) => {
             onChangeText={(val) => onHandleChange("password", val)}
           />
         </View>
-        <TouchableOpacity style={UserStyle.buttonStyle} onPress={handleSubmit}>
+        <TouchableOpacity
+          style={UserStyle.buttonStyle}
+          onPress={handleSubmit}
+          disabled={disabled}
+        >
           {isLoading ? (
             <ActivityIndicator animating={isLoading} />
           ) : (
